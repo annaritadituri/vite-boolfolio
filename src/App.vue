@@ -1,7 +1,11 @@
 <script>
     import axios from 'axios';
+    import Project from './components/ProjectComponent.vue';
     export default {
         name: 'Projects',
+        components: {
+            Project
+        },
 
         data() {
 
@@ -37,7 +41,24 @@
 </script>
 
 <template>
-    <h1>{{ title }}</h1>
+
+    <div class="container">
+
+        <h1 class="text-center">{{ title }}</h1>
+        <div class="row">
+
+            <div class="col-3" v-for="project in projects">
+                <Project
+                    :title="project.title"
+                    :description="project.description"
+                    :start_date="project.start_date"
+                />
+            </div>
+                
+        </div>
+
+    </div>
+    
 </template>
 
 <style lang="scss" scoped>
